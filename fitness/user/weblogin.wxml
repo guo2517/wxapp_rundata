@@ -1,0 +1,14 @@
+<view class='page'>
+  <view  class="user">
+    <view open-type='getUserInfo' bindtap='getUserInfo' class='user-info'>
+      <image class="avatar" src="{{userInfo.avatar?userInfo.avatar:userInfo.avatarUrl}}" background-size="cover"></image>
+      <view class="nickname">{{userInfo.nickname}}</view>
+    </view> 
+  </view> 
+</view>
+<button  class='login'  open-type='getUserInfo' bindtap='getUserInfo'  bindtap='getUserInfo' wx-if="{{times<300}}"> 
+  <view class='login-btn {{loginStatus==1?"login-ok":""}}' >{{loginStatus==1?"登录成功":"立即登录"}}</view>
+</button>
+<view wx:else class='nologin'>
+二维码已失效，请重新登录
+</view>

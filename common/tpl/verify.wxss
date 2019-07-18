@@ -1,0 +1,27 @@
+
+.verify{
+  position:fixed;z-index:999999;left:0;top:0;width:100vw;height: 100vh;background-color:#fff;
+}
+.verify .tool-screen{
+  font-size:28px;
+}
+.verify .tool{
+  width: 100%;
+  position: fixed;
+  bottom:10px;left: 0;
+}
+.verify .tool-row{
+  text-align: center;
+}
+.verify .tool-box{
+  display: inline-block;
+  text-align: center;
+  border-top:1px solid #fff;
+  border-left: 1px solid #fff;
+  color:#fff;
+  font-size:26px;
+  background-color: #ccc;
+  line-height: 24vw;
+  width: 24vw;
+  height: 24vw;
+}

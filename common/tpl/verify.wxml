@@ -1,0 +1,40 @@
+<view class='verify' > 
+<view class='tool-screen'>
+  <view style='height:120px;overflow:scroll;word-break:break-all;padding:20px 10px;'>
+    <text style='color:#FF7F27;border-bottom:1px solid #ccc;padding:0px 10px;'>{{tool.number1}}</text>
+    <text style='padding:0px 10px;color:#ff4444;line-height:15px;'>{{tool.action!=null?tool.action:''}}</text>
+    <text style='color:#00A2E8;border-bottom:1px solid #ccc;padding:0px 10px;'>{{tool.number2}}</text>
+    <text style='padding:0px 10px;'>=</text>
+    <text style='color:#22B14C;border-bottom:1px solid #ccc;padding:0px 10px;'>{{tool.result!=null?tool.result:''}}</text>
+  </view>  
+</view>
+<view class='tool'>
+  <view class='tool-row'>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="+">+</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="-">-</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="*">×</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="/">÷</view>
+  </view>
+  <view class='tool-row'>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="1">1</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="2">2</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="3">3</view>
+   <view class='tool-box' bindtap='verifyToolTap' data-val="c">C</view>
+  </view>
+  <view class='tool-row'>
+   <view class='tool-box' bindtap='verifyToolTap' data-val="4">4</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="5">5</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="6">6</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="0">0</view>
+    
+  </view>
+  <view class='tool-row'>
+  <view class='tool-box' bindtap='verifyToolTap' data-val="7">7</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="8">8</view>
+    <view class='tool-box' bindtap='verifyToolTap' data-val="9">9</view>
+    
+    
+    <view class='tool-box' bindtap='verifyToolTap' data-val="=">=</view>
+  </view> 
+</view> 
+</view>
