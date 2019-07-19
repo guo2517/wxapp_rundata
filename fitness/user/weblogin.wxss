@@ -3,6 +3,9 @@
   font-weight: 40rpx;background-color:#ccc;color:#fff;padding:20px 20px;
   border-radius: 5px;
 }
+.login-ok{
+  background-color:#3AC864;
+}
 .user{
   background-color:#EE5E7B;
   text-align: center;

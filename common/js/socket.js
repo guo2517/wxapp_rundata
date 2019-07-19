@@ -3,17 +3,18 @@ var socket={
   fid:null,
   tid:null,
   timer:null,
+  task:null,
   closeStatus:0,//等于1是不在自动关闭重连
 }
 socket.close=function(){
   this.closeStatus=1;
   clearInterval(this.timer)
-  wx.closeSocket()
+  this.task.close()
 }
 socket.connect=function(urll){
   var app = getApp();
   var urlt = (urll == undefined) ? app.config.socketServer : urll;
-  wx.connectSocket({
+  this.task=wx.connectSocket({
     url: urlt,
     header: {
       'content-type': 'application/json'
@@ -28,10 +29,10 @@ socket.init = function (urll){
   var app=getApp();
   this.closeStatus == 0 
   this.connect();
-  wx.onSocketMessage(function(data){
+  this.task.onMessage(function(data){
     var app = getApp(); 
-    console.log(data)
     data=JSON.parse(data.data);
+    console.log(data)
     switch(data.type){
       case 'init':
         app.socket.fid=data.fid;  
@@ -39,11 +40,17 @@ socket.init = function (urll){
       case 'weblogin':
         break;
       
-      case 'weappLoginOK':
-        if(data.status==1){
+      case 'weappLoginOk':
+        console.log(data.status)
+        if(parseInt(data.status)==1){
+          wx.showToast({
+            title: '登录成功！',
+          }); 
           app.initPageData({
             loginStatus: 1
-          })
+          });
+         
+         
         }else{
           wx.showToast({
             title: data.error,
@@ -60,7 +67,7 @@ socket.init = function (urll){
         
     }
   });
-  wx.onSocketClose(function () {
+  this.task.onClose(function () {
     //关闭自动重连
     if(app.socket.closeStatus==0){
       app.socket.connect(); 
@@ -76,11 +83,17 @@ socket.init = function (urll){
 socket.send=function(str){ 
   if (typeof (str)!="string"){
     str = JSON.stringify(str);
-  }
+  } 
   console.log(str);
-  wx.sendSocketMessage({
+  this.task.send({
     data:str,
-  })
+    success:function(){
+
+    },
+    fail:function(){
+
+    }
+    })
 }
 socket.heart=function(){
   var app=getApp();
