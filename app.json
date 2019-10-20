@@ -1,7 +1,8 @@
 {
   "pages": [
     "fitness/index/index",
-    "fitness/user/weblogin"
+    "fitness/user/weblogin",
+    "fitness/user/info"
   ],
   "window": {
     "backgroundTextStyle": "light",
