@@ -1,8 +1,10 @@
 {
   "pages": [
-    "fitness/index/index",
+    "fitness/index/index", 
     "fitness/user/weblogin",
-    "fitness/user/info"
+    "fitness/user/info",
+    "fitness/tools/food",  
+    "fitness/tools/knowledge" 
   ],
   "window": {
     "backgroundTextStyle": "light",

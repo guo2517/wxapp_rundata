@@ -1,0 +1,42 @@
+<view class="food-header">
+  <view class='search'>
+    <form onsubmit="">
+    <input type="text" name="keyword" oninput="" class='search-input' /> 
+    <view class='search-btn' bindtab="">
+      <image src='/common/images/icon-search.png'></image>
+    </view>
+    </form>
+  </view> 
+</view>
+<scroll-view scroll-y="true"  class="food-left"> 
+  <view class="item">推荐</view>
+  <view class="item">主食</view>
+  <view class="item active">肉类</view>
+  <view class="item">海鲜</view>
+  <view class="item">蔬菜</view>
+  <view class="item">水果</view>
+  <view class="item">蛋糕</view>
+</scroll-view>
+<scroll-view scroll-y="true"  class="food-right"> 
+  <block wx:for="{{[0,2,3,2,3,21,2,12,12,12,213,123,12,312,321,3,123,123,21,321,3123,1,3,1231,21,12312,2]}}">
+  <view class="food-item">
+    <image class="food-pic" src="/common/images/goods.png"></image>
+    <view class="food-info">
+      <view class="food-name">鸡胸肉<text class="food-alias">鸡胸脯肉</text></view>
+      <view class="row">
+        <view class="label">热量</view>
+        <view class="value">100kcal</view>
+        <view class="label">碳水</view>
+        <view class="value">23g</view>
+      </view>
+      <view class="row">
+        <view class="label">脂肪</view>
+        <view class="value">5g</view>
+        <view class="label">蛋白质</view>
+        <view class="value">23g</view>
+      </view>
+    
+    </view>
+  </view>
+  </block>
+</scroll-view>

@@ -2,9 +2,17 @@ var app=getApp();
 const verify = require("../../common/tpl/verify.js")
 Page({
   data:{  
+    artpage:{
+      page:1,
+      size:20
+    },
+    adverts:[
+      '/common/images/demo.jpg',
+      "/common/images/goods.png"
+    ],
     tabbar:{
       dataset:[
-        { "type": "index", text: "社区" },
+        { "type": "index", text: "首页" },
         { "type": "tool", text: "工具" }, 
         { "type": "my", text: "我的" },
       ],
@@ -39,12 +47,22 @@ Page({
     app.getOpenID(this,function(){
       app.getUserInfo(that, null);
     });
+    app.tool.randChar();
     app.request({
-      url:"home.index",
+      data:that.artpage,
+      url:"home.articles",
       success:function(ret){
-        that.setData({
-          msgs:ret.data.msgs
-        })
+        if(ret.status==1){
+          that.setData({
+            artpage: ret.page,
+            articles:ret.data
+          })
+        }else{
+          wx.showToast({
+            title: '获取数据失败！',
+          })
+        }
+        
       }
     })
   },
@@ -52,6 +70,12 @@ Page({
     app.getUserInfo(this,function(){
       
     },e);
+  },
+  tooltap:function(e){
+    var tool=e.currentTarget.dataset.tool;
+    wx.navigateTo({
+      url: '/fitness/tools/' + tool,
+    })
   },
   onReady:function(){
     // 页面渲染完成

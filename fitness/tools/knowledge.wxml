@@ -1,0 +1,61 @@
+<view class="know-header">
+  <view class='search'>
+    <form onsubmit="">
+    <input type="text" name="keyword" oninput="" class='search-input' /> 
+    <view class='search-btn' bindtab="">
+      <image src='/common/images/icon-search.png'></image>
+    </view>
+    </form>
+  </view>
+  <view class="cates">
+    <view class="cate-item">全部</view>
+    <view class="cate-item cate-active">常识</view>
+    <view class="cate-item">饮食</view>
+    <view class="cate-item">健身</view> 
+    <view class="cate-item">其他</view> 
+  </view>
+</view>
+<scroll-view scroll-y="true"  class="know-body"> 
+  <view class="know-item">
+    <image class="know-pic" src="/common/images/icon-rice.png"></image>
+    <view class="know-info">
+      <view class="know-name">水<text class="know-alias">H2O</text></view>
+      <view class="know-useful">维持正常生命活动</view> 
+      <view class="know-from">来源：大自然</view>
+      <view class="know-suggest">建议：每天喝1.5-2L水</view>
+    </view>
+    <view class="know-more">
+      〉
+    </view>
+  </view> 
+  <view class="know-item">
+    <image class="know-pic" src="/common/images/icon-rice.png"></image>
+    <view class="know-info">
+      <view class="know-name">BMI指数<text class="know-alias">身体质量指数</text></view>
+      <view class="know-useful">常用的反应人体健康状况的指标之一，一般BMI指数大于24被定义为肥胖</view>  
+    </view>
+    <view class="know-more">
+      〉
+    </view>
+  </view> 
+  <view class="know-item">
+    <image class="know-pic" src="/common/images/icon-rice.png"></image>
+    <view class="know-info">
+      <view class="know-name">最佳燃脂心率<text class="know-alias"></text></view>
+      <view class="know-useful">不同的年龄、性别最佳燃脂心率不同，但有研究表明达到最大心率的60%到70%燃脂效果相对较好</view>  
+    </view>
+    <view class="know-more">
+      〉
+    </view>
+  </view> 
+  <view class="know-item">
+    <view class="">
+      <image class="know-pic" src="/common/images/icon-rice.png"></image>
+    </view>
+  </view> 
+   <view class="know-item">
+    <view class="">
+      <image class="know-pic" src="/common/images/icon-rice.png"></image>
+    </view>
+  </view> 
+</scroll-view>

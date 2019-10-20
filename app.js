@@ -6,16 +6,17 @@ App({
     siteroot: "https://fitness.guo888.cn/",
     version: "1.0.3"
   },
-  data:{},//全局参数
-  userInfo:null,
-  openid:null,
+  data:{
+    userInfo:null,
+    openid:null
+  },//全局参数 
   onLaunch: function () {
     var app = this; 
   },  
   request: function (options, func = null) { 
     var url0 = "",openid="",that=this,time=Date.parse(new Date())/1000;
-    if (this.openid != null  ){
-      openid=this.openid;
+    if (this.data.openid != null  ){
+      openid=this.data.openid;
     }
     if (typeof (options) != "object") {
       url0 = options;
@@ -29,10 +30,12 @@ App({
         version:that.version,
         o:openid,
         t:time,
+        r:that.tool.randChar(10,1),
+        v: that.config.version,
         sign:"",
-        "from": "weapp"}; 
+        f: "weapp"}; 
     if (typeof (options.data)!= "undefined") { 
-      params = Object.assign(options.data, {t:time, v: that.version, o: openid, "from": "weapp" })
+      params = Object.assign(options.data, { r: that.tool.rand(10,1),v: that.config.version,t:time, v: that.version, o: openid, f: "weapp" })
     } 
     params.sign=that.getSign(params);
     wx.request({
@@ -123,6 +126,7 @@ App({
             that.initPageData({
               userInfo: ret.data
             })
+            that.data.userInfo=ret.data;
           }
           if(typeof(func)=="function"){ 
             func(ret.data);
@@ -141,7 +145,8 @@ App({
                 if (ret.status) {
                   that.initPageData({
                     userInfo: ret.data
-                  })
+                  });
+                  that.data.userInfo = ret.data
                 }
                 if (typeof (func) == "function") {
                   func(ret.data);
@@ -168,7 +173,7 @@ App({
           data: { code: res.code }, 
           success: function (res) {
             if(res.status>0){
-              that.openid = res.openid; 
+              that.data.openid = res.openid; 
             }else{
               wx.showToast({
                 title: res.errmsg,

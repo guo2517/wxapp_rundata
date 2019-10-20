@@ -1,5 +1,6 @@
+@import "./common/wxss/weui.wxss";
 page{
-  width:100vw;height: 100vh;
+  width:100vw;height: 100vh;background-color: #f8f8f8;
 } 
 /*//省略号
 overflow:hidden;
@@ -31,4 +32,21 @@ button::after{
 }
 .button-hover{
   background-color:#fff;
+}
+
+.search{
+  height: 40px;width:92vw;text-align: center;
+  border-radius: 4px;margin:10px auto;background-color:#fff;
+}
+.search-input{
+  width:calc(100% - 65px);display: inline-block;margin:0 auto;
+  background-color: #fff;border:none;
+  height: 30px;line-height: 30px;padding:5px 10px;vertical-align: top;
+}
+.search-btn{
+  display: inline-block;margin:0 auto;vertical-align: top;
+  height: 40px;background-color:#fff; width:40px;
+}
+.search-btn image{
+  width:22px;height: 22px;margin:9px auto;
 }

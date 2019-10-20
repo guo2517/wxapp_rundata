@@ -10,27 +10,76 @@
 <scroll-view  scroll-x="false" scroll-y="true"  enable-back-to-top="true" class='page-index'  >
   <form > 
   <view class='search'>
+    <form onsubmit="">
     <input type="text" name="keyword" oninput="" class='search-input' /> 
-    <view class='search-btn'>
+    <view class='search-btn' bindtab="">
       <image src='/common/images/icon-search.png'></image>
     </view>
+    </form>
   </view>
   </form>
   <view class="index-tabs">
     <view class='tabs-title'>
-      <view class="item">最新</view>
-      <view class='item'>分享</view>
-      <view class='item'>常识</view>
+      <view class="item" data-type="latest">最新</view>
+      <view class='item' data-type="share">分享</view>
+      <view class='item' data-type="sknow">通知</view>
     </view>
-    <view class='tabs-content' ></view> 
+    <view class='tabs-content' >
+      <view class='news' wx:for="{{articles}}">
+      <view class="news-head">
+        <view class='news-left'> 
+          <image src='{{userInfo.avatar}}' class='news-avatar'></image>
+        </view>
+        <view class='news-center'>
+          <view class='news-nickname ellipsis'>{{userInfo.nickname}}</view>
+          <view class='news-before'>7小时前</view>
+        </view>
+        <view class='news-right'>
+          <view class='news-top'>置顶</view>
+          <view class='news-jing'>精华</view>
+          <view class='news-hot'>热门</view>
+        </view>
+        
+      </view>
+      <view class='news-content'><text class="news-topic">#{{item.topic}}#</text>{{item.title}}</view>
+      </view>
+    </view> 
   </view>
 </scroll-view> 
 </block>
 
 <!-- 分类页面 -->
-<block wx:if="{{tabbar.active=='cate'}}">
-<scroll-view scroll-x="false" scroll-y="true" enable-back-to-top="true" class='page-cate' style='z-index:1;padding-bottom:0px;height:{{device.height-51}}px'>
+<block wx:if="{{tabbar.active=='tool'}}">
+<scroll-view scroll-x="false" scroll-y="true" enable-back-to-top="true" class='page-tool' style='z-index:1;padding-bottom:0px;height:{{device.height-51}}px'>
+  <swiper class='adverts' indicator-dots="false}"
+  autoplay="true" interval="8000" duration="1000">
+  <block wx:for="{{adverts}}">
+    <swiper-item>
+      <image src="{{item}}" mode='aspectFill' class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class='tools'>
+ <view class='tool tool-blue-1' bindtap="tooltap" data-tool="knowledge">
+    <view class='tool-img'>
+      <image src='/common/images/icon-book.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>知识库</view> 
+       <view class='tool-desc'>名词解释</view>
+    </view>
+  </view>
+  <view class='tool tool-pink-1' bindtap="tooltap" data-tool="food">
+    <view class='tool-img'>
+      <image src='/common/images/icon-rice.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>食材库</view> 
+       <view class='tool-desc'>热量、营养价值</view>
+    </view>
+  </view>
 
+</view>
 </scroll-view>
 </block>
  
