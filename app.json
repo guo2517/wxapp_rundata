@@ -1,10 +1,11 @@
 {
   "pages": [
-    "fitness/index/index", 
+    "fitness/index/index",
     "fitness/user/weblogin",
     "fitness/user/info",
-    "fitness/tools/food",  
-    "fitness/tools/knowledge" 
+    "fitness/food/food",
+    "fitness/knowledge/knowledge",
+    "fitness/food/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

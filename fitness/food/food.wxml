@@ -1,0 +1,38 @@
+<view class="food-header">
+  <view class='search'>
+    <form bindsubmit="formsub">
+    <input type="text" name="keyword" value="{{keyword}}" bindinput="searchInput" class='search-input' /> 
+    <view class='search-btn' bindtap="formsub">
+      <image src='/common/images/icon-search.png'></image>
+    </view>
+    </form>
+  </view> 
+</view>
+<scroll-view scroll-y="true"  class="food-left"> 
+  <block wx:for="{{groups}}">
+  <view class="item {{groupsActive==item.id?'active':''}}" bindtap="grouptap" data-id="{{item.id}}">{{item.name}}</view>
+  </block> 
+</scroll-view>
+<scroll-view scroll-y="true"  class="food-right" bindscrolltolower="nextPage"> 
+  <block wx:for="{{foods}}">
+  <view class="food-item">
+    <image class="food-pic" src="/common/images/goods.png"></image>
+    <view class="food-info" bindtap="foodDetail" data-id="{{item.id}}">
+      <view class="food-name">{{item.name}}<text class="food-alias">{{item.alias==null?"":item.alias}}</text></view>
+      <view class="row">
+        <view class="label">热量</view>
+        <view class="value">{{item.elements[1]!=undefined?item.elements[1].content_value+item.elements[1].content_unit:'0'}}</view>
+        <view class="label">碳水</view>
+        <view class="value">{{item.elements[2]!=undefined?item.elements[2].content_value+item.elements[2].content_unit:'0'}}</view>
+      </view>
+      <view class="row">
+        <view class="label">脂肪</view>
+        <view class="value">{{item.elements[3]!=undefined?item.elements[3].content_value+item.elements[3].content_unit:'0'}}</view>
+        <view class="label">蛋白质</view>
+        <view class="value">{{item.elements[4]!=undefined?item.elements[4].content_value+item.elements[4].content_unit:'0'}}</view>
+      </view>
+    
+    </view>
+  </view>
+  </block>
+</scroll-view>

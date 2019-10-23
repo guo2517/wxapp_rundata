@@ -60,7 +60,7 @@
   </block>
 </swiper>
 <view class='tools'>
- <view class='tool tool-blue-1' bindtap="tooltap" data-tool="knowledge">
+ <view class='tool tool-blue-1' bindtap="tooltap" data-url="/knowledge/knowledge">
     <view class='tool-img'>
       <image src='/common/images/icon-book.png'></image>
     </view>
@@ -69,7 +69,7 @@
        <view class='tool-desc'>名词解释</view>
     </view>
   </view>
-  <view class='tool tool-pink-1' bindtap="tooltap" data-tool="food">
+  <view class='tool tool-pink-1' bindtap="tooltap" data-url="/food/food">
     <view class='tool-img'>
       <image src='/common/images/icon-rice.png'></image>
     </view>
@@ -106,7 +106,7 @@
       </button> 
     </view> 
     <view class='my-menus'>
-      <view class='menu-item'>
+      <view class='menu-item' bindtap='mymenutap' data-menu='info'>
         <view class='menu-left'>
           <image src='/common/images/icon-user.png'></image>
         </view>

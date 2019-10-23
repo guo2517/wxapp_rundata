@@ -34,10 +34,14 @@ App({
         v: that.config.version,
         sign:"",
         f: "weapp"}; 
+
     if (typeof (options.data)!= "undefined") { 
       params = Object.assign(options.data, { r: that.tool.rand(10,1),v: that.config.version,t:time, v: that.version, o: openid, f: "weapp" })
     } 
     params.sign=that.getSign(params);
+    if(typeof(options.loading)!="undefined"&&options.loading==true){
+      wx.showLoading({title:"数据加载中"})
+    }
     wx.request({
       url: url0, //仅为示例，并非真实的接口地址
       data: params,
@@ -46,8 +50,19 @@ App({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+        if (typeof (options.loading) != "undefined" && options.loading == true) {
+          wx.hideLoading();
+        }
         if (res.statusCode < 400) {
-          console.log(res.data)
+          console.log(res.data);
+          if (typeof (res.data.status) != "undefined" && res.data.status==0){
+            if (typeof (res.data.error) != "undefined")
+            wx.showModal({
+              title: '请求错误',
+              showCancel:false,
+              content:res.data.error 
+            })
+          }
           if (typeof (options) != "object") {
             if (typeof (func) == "function") {
               func(res.data);//回调
@@ -62,6 +77,9 @@ App({
         }
       },
       fail: function (e) {
+        if (typeof (options.loading) != "undefined" && options.loading == true) {
+          wx.hideLoading();
+        }
         if (e.errMsg.indexOf("domain") != -1) {
           console.log("缺少request域名配置: " + url0);
         }

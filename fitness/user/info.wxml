@@ -1,2 +1,65 @@
-<!--fitness/user/info.wxml-->
-<text>fitness/user/info.wxml</text>
+<view class="page">
+  <view class="row">
+    <view class="left" style="height: 50px;line-height: 50px;">头像</view>
+    <view class="center">
+      <image class="avatar" src="{{userInfo.avatar.length>0?userInfo.avatar:'/common/images/goods.png'}}"></image>
+    </view>
+    <view class="right" style="height: 50px;line-height: 50px;">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">昵称</view>
+    <view class="center">
+      {{userInfo.nickname.length>0?userInfo.nickname:'授权获取'}}
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">城市</view>
+    <view class="center">
+      {{userInfo.city.length>0?userInfo.city:'授权获取'}}
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">性别</view>
+    <view class="center">
+      {{userInfo.sex==1?"男":(userInfo.sex==2?"女":"微信未设置")}}
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">生日</view>
+    <view class="center">
+      {{userInfo.birthday.length>0?userInfo.birthday:'设置'}}
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">身高</view>
+    <view class="center">
+      {{userInfo.weight.length>0?userInfo.weight:'设置'}}
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">体重</view>
+    <view class="center">
+      {{userInfo.height.length>0?userInfo.height:'设置'}}
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">UID</view>
+    <view class="center">
+      {{userInfo.id>0?userInfo.id:''}}
+    </view>
+    <view class="right"></view>
+  </view>
+  <view class="row">
+    <view class="left">OpenID</view>
+    <view class="center">
+      {{userInfo.openid.length>0?userInfo.openid:''}}
+    </view>
+    <view class="right"></view>
+  </view>
+</view>

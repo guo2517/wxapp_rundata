@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "enablePullDownRefresh": false,
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "用户资料",
+  "navigationBarBackgroundColor": "white"
 }

@@ -1,4 +1,38 @@
 var tools = {}
+tools.initPage=function(page,pagename){
+  if(typeof(pagename)=="undefined")pagename="pagnation";
+  var data={};
+  data[pagename]={
+    page:0,
+    limit:30,
+    pagecount:1
+  }
+  page.setData(data)
+}
+tools.nextPage=function(page,pagename){
+  if (typeof (pagename) == "undefined") pagename = "page";
+  var data = {};
+  var pag = typeof(page.data[pagename])!='undefined'?page.data[pagename]:null;
+  if (pag == undefined || pag == null){
+    console.log("分页变量设置错误")
+    return false;
+  }
+  if (pag.page < pag.pagecount) {
+    pag.page++;
+    page.setData({
+      page: pag
+    }); 
+    return true;
+  } else {
+    return false;
+  }
+  data[pagename] = {
+    page: 0,
+    limit: 30,
+    pagecount: 1
+  }
+  page.setData(data)
+}
 tools.compareVersion = function (v0, v1) { //如果v1>v0返回1，v1<=v2返回0
 
   let vr1 = v1.split(".");

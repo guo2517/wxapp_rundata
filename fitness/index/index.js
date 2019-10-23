@@ -70,11 +70,17 @@ Page({
     app.getUserInfo(this,function(){
       
     },e);
+  }, 
+  mymenutap: function(e) {
+    var menu = e.currentTarget.dataset.menu;
+    wx.navigateTo({
+      url: '/fitness/user/' + menu,
+    })
   },
   tooltap:function(e){
-    var tool=e.currentTarget.dataset.tool;
+    var tool=e.currentTarget.dataset.url;
     wx.navigateTo({
-      url: '/fitness/tools/' + tool,
+      url: '/fitness' + tool,
     })
   },
   onReady:function(){
