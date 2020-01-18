@@ -1,42 +1,89 @@
+ .sort-right .sort-desc{
+   font-size:10px;padding-left:5px;
+ }
+ .sort-panel .sort-label{
+   margin:5px auto;
+ }
+.sort-body .btn{
+  width:100%;height:40px;border-top:1px solid #f5f5f5;position: absolute;bottom:0;left: 0;text-align: center;
+  line-height: 40px;color:#999;font-size: 14px;z-index: 1000;background-color:#fff;
+}
+.sort-panel .sfields{
+  display: inline-block;margin:0px 0px;width:33.3%;font-size: 14px;height:80rpx;line-height: 80rpx;text-align:center;
+}
+.sort-panel .sfields-active{
+  color:#ff4444;font-weight: 600;
+}
+.sort-panel .field{
+  color:#999;font-size:12px;padding:3px 15px;
+}
+.sort-body{
+  background-color: #fff;height: calc(100% - 30vh - 76px);width: 100vw;position: fixed;left: 0;top:76px;z-index: 999;
+  
+}
+.sort-panel{
+  position: relative;width:100%;height: calc(100% - 45px);padding-bottom: 45px;overflow-y:scroll;
+}
+.sort-bg{
+  background-color:#000;opacity: 0.6;width:100vw;height: 30vh;position: fixed;bottom:0;left:0;z-index:999;color:#fff;
+  text-align:center;line-height: 30vh; 
+}
+.sort{
+  height:25px;width:100vw;clear: both;font-size: 12px;background-color: #FFFFFF;color:#999;
+  border-bottom:1px solid #f5f5f5;
+}
+.sort-left{
+  float:left;line-height: 25px;padding:0 15px;height: 100%;
+}
+.sort-right{
+  float:right;line-height: 25px;padding:0 20px;height: 100%;
+}
 .food-header{
-  position: fixed;top:0;width:100vw;height: 60px;
+  position: fixed;top:0;width:100vw;height:76px;
+}
+.search{
+  margin:5px auto;
 }
 .food-left{
-  position: fixed;top:60px;left: 0;width:25vw;height: calc(100vh - 60px); 
+  position: fixed;top:76px;left: 0;width:25vw;height: calc(100vh - 76px); 
   background-color: #fff;
 }
 .food-right{
-  position: fixed;top:60px;left:25vw;height: calc(100vh - 60px);width:75vw;
+  position: fixed;top:76px;left:0;height: calc(100vh - 76px);width:100vw;
   background-color:#fff;border-left: 1px solid #f2f2f2;
 }
 .food-left .item{
-  border-bottom:1px solid #f2f2f2;line-height: 1.5;text-align: center;padding:15px 5px;
+  border-bottom:1px solid #f2f2f2;line-height: 1.3;text-align: center;padding:12px 5px;font-size: 12px;
 }
 .food-left .active{
   color:#ff4444;
 }
 .food-item{
-  border-bottom:1px solid #f2f2f2;padding:10px 0px;
+  border-bottom:1px solid #f2f2f2;padding:15px 0px 10px 0;
 }
 .food-pic{
-  width:60px;height:60px;margin:5px 5px;display: inline-block;vertical-align: top;border-radius: 3px;
+  width:65px;height:65px;margin:0px 10px;display: inline-block;vertical-align: top;border-radius: 3px;
 }
 .food-info{
-  width:calc(100% - 70px);vertical-align: top;display: inline-block;padding-bottom: 5px;
+  width:calc(100% - 90px);vertical-align: top;display: inline-block;padding-bottom: 5px;
 } 
 .food-info .row{
-line-height:20px;height: 20px;display: block;
+line-height:20px;height: 20px;display: block;clear:both;
+}
+.food-info .row-half{
+   display: inline-block;margin:0 0;vertical-align:top;width:50%;margin-bottom:5px;
 }
 .food-info .row view{
-  display: inline-block; font-size:12px;height: 20px;line-height: 20px;
+  float:left;font-size:12px;height:auto;text-align: left;word-break: break-all;overflow-y: visible;line-height: 1.2;
 }
 .food-item .label{
-  width:40px;text-align: left;color:#888;
+  width:55px;text-align: left;color:#888;
 }
-.food-item .value{
-  width:calc(50% - 40px);text-align: left;
+.row-half .value{
+  width:calc(100% - 55px);text-align: center;
 }
 .food-name{
-  line-height: 16px;
+  margin-bottom: 5px;line-height: 1.3;
 }
-.food-alias{font-size: 13px;color:#999;padding:0px 10px;}
+.food-alias{font-size: 13px;color:#999;padding:0px 10px;line-height:1.2}
+.sort-mark{color:#FF7F27}

@@ -1,0 +1,50 @@
+<view class="page" style="background-color:#fff;">
+  <view class="choose">
+ 
+    <view class="camera" bindtap="getPicture"> 
+
+       <camera device-position="back" mode="normal" flash="off" binderror="error" style="display:{{useCamera==1?'block':'none'}}" ></camera>
+       <image wx:if="{{useCamera!=1}}" src="/common/images/icon-camera-grey.png"></image>
+    </view>
+    <scroll-view  scroll-x="false" scroll-y="true"  enable-back-to-top="true" class="picture">
+      <block wx:if="{{history.length<1}}">
+      <view class="desc">
+        <view>点击左侧图标拍照</view>
+        <view>结果保留7天或20条</view>
+      </view>
+      </block>
+      <block wx:else> 
+        <block wx:for="{{history}}">
+        <image mode="aspectFit" bindtap="historyDetail" data-index="{{index}}" class="{{index==detailindex?'active':''}}" src="{{siteroot}}{{item.path}}" data-id="{{item.id}}"></image>
+        </block> 
+       </block>
+    </scroll-view>
+      
+  </view>
+  <view class="result">
+    <view class="result-label">识别结果：</view> 
+    <scroll-view  scroll-x="false" scroll-y="true"  enable-back-to-top="true"  wx:if="{{result.length>0}}">
+      <block wx:for="{{result}}">
+      <view class="result-item">
+        <image class="item-pic" src="{{item.picure.length>3?item.picture:'/common/images/icon-default-grey.png'}}"></image>
+        <view class="item-info" bindtap="itemTap" data-name="{{item.name}}" data-foodid="{{item.food_id>0?item.food_id:0}}">
+          <view class="item-name">{{item.name}}<text class="item-alias" wx:if="{{item.alias!=undefined&&item.alias!=item.name}}">{{item.alias}}</text><text class="item-det" wx:if="{{item.food_id>0}}">详情</text></view>
+          <view class="item-hot" wx:if="{{item.calorie!=undefined}}"><text class="calorie" >{{item.calorie}}</text>千卡/100克</view>
+        </view>
+        <view class="item-like like-{{item.score>=0.8?'green':(item.score>=0.6?'blue':(item.score>=0.4?'orange':'grey'))}}">
+          <view class="percent">{{item.score*100}}%</view>
+          <view class="desc">相似度</view>
+        </view>
+      </view>
+      </block> 
+    </scroll-view>
+    <block wx:else>
+      <view class="null">暂时没有识别结果</view>
+    </block>
+  </view> 
+  <view class="bottom">
+    <image src="/common/images/icon-camera-white.png" bindtap="getPicture" class="bottom-btn"></image>
+    <image src="/common/images/icon-picture-white2.png" bindtap="chooseImg" class="bottom-btn"></image>
+  </view>
+  <view class="footer">基于百度AI · 图片识别技术</view>
+</view>

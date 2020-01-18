@@ -1,0 +1,40 @@
+.know-header{
+  position: fixed;top:0;width:100vw;height: 100px;
+}
+.know-body{
+  position: fixed;top:100px;height: calc(100vh - 105px);
+}
+.cates{width: 100%;height:40px; background-color: #fff;color:#999 }
+.cate-item{
+  width: 20vw;height: 38px;display:inline-block;text-align: center;line-height: 38px;
+
+}
+.cate-active{
+  color:#EE5E7B;border-bottom:2px solid #EE5E7B;
+}
+.know-item{
+  padding:0px 0px ;background-color: #fff;margin-top:5px;  display: block;
+  height: 120px;overflow: hidden;
+}
+.know-pic{
+  width:100px;height: 100px;border-radius: 5px;margin:10px 10px;
+  display: inline-block;vertical-align: top;
+}
+.know-more{
+  width:20px;display: inline-block;color:#ccc;height: 100px;margin:10px 0;line-height: 100px;
+  vertical-align: top;
+}
+.know-info{
+  display: inline-block;width:calc(100vw - 160px);margin:10px 0px;font-size: 14px;
+  padding:0px 10px;color:#999;line-height: 1.4;
+  vertical-align: top;
+}
+.know-name{
+  font-size: 16px;font-weight: 500;color:#000;line-height: 1.6;
+}
+.know-alias{
+  font-size:13px;color:#888;padding:0px 3px;
+}
+.know-note{
+  line-height: 1.4;
+}

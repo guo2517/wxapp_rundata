@@ -1,0 +1,31 @@
+<view class="know-header">
+  <view class='search'>
+    <form bindsubmit="formsub" >
+    <input type="text" name="keyword" oninput="" class='search-input' /> 
+    <view class='search-btn' bindtab="formsub">
+      <image src='/common/images/icon-search.png'></image>
+    </view>
+    </form>
+  </view>
+  <view class="cates">
+    <block wx:for="{{groups}}">
+    <view bindtap="groupchg" class="cate-item {{group_id==item.id?'cate-active':''}} font-{{fontSize+4}}" data-id="{{item.id}}">{{item.name}}</view>
+    </block> 
+  </view>
+</view>
+
+<scroll-view scroll-y="true"  class="know-body" bindscrolltolower="nextPage"> 
+  <block wx:for="{{terms}}">
+  <view class="know-item">
+    <image class="know-pic" src="/common/images/{{item.img!=null?item.img:item.icon}}"></image>
+    <view class="know-info">
+      <view class="know-name font-{{fontSize+3}} ellipsis">{{item.name}}</view>
+      <view class="know-note font-{{fontSize+1}} ellipsis-box" style="height:calc(100% - {{fontSize*1.6}}px);-webkit-line-clamp:{{lines}}">{{item.note!=null?item.note:''}}</view>   
+    </view>
+    <view class="know-more">
+      〉
+    </view>
+  </view> 
+  </block>
+  
+</scroll-view>

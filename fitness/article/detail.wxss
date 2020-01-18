@@ -1,0 +1,36 @@
+.title{
+  font-size: 20px;text-align: left;padding:5px 15px;line-height: 1.4;
+}
+.desc{
+  font-size:13px;padding:5px 15px;
+}
+.desc .author,.desc .ontime{
+  color:#999;
+}
+.is_original{
+  color:#FE9B58;
+}
+.is_original-1{
+  color:#62DAAA;
+}
+.author{
+  padding-right: 10px;
+}
+.ontime{
+  padding-left:10px;color:#999;
+}
+page{
+  background-color:#fff;
+}
+.wxParse{
+  padding:15px 15px;
+}
+.comment{
+  text-align: center;padding:50px 40px;font-size: 14px;background-color: #f2f2f2;color:#999;margin-top:20px;
+}
+.original{
+  text-align: left;font-size: 14px;padding:3px 10px;word-break: break-all
+}
+.original:last-child{
+  margin-bottom:20px;
+}

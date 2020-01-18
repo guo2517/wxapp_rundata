@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "enablePullDownRefresh": false,
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "食物详情",
+  "navigationBarBackgroundColor": "#FFFFFF" 
 }

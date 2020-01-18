@@ -1,0 +1,14 @@
+<import src="../../common/wxParse/wxParse.wxml"/> 
+<view class="head">
+  <view class="title">{{article.title}}</view>
+  <view class="desc"><text class="author">{{artice.author!=''?article.author:'佚名'}}</text>发布于<text class="ontime">{{article.ontime!=''?article.ontime:article.lastchange}}</text><text class="is_original {{article.is_original==1?'is_original-1':''}}">【{{article.is_original==1?'原创':'转载'}}】</text></view>
+</view>
+<view class="wxParse" style='min-height:20px;overflow-x:hidden;overflow-y:scroll;'> 
+  <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view> 
+<view class="original" bindlongtap="copyText" data-text="{{article.original_info}}" wx:if="{{article.original_info.length>0}}">【转载于】{{article.original_info}}</view>
+<view class="original" bindlongtap="copyText" data-text="{{article.original_url}}" wx:if="{{article.original_url.length>0}}">【原文地址】：{{article.original_url}}</view>
+<view class="comment" >
+  <view>评论和转发功能还未上线</view>
+  <view>敬请期待</view>
+</view>

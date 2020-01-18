@@ -1,0 +1,72 @@
+.row{
+  border-bottom: 1px solid #f5f5f5;padding:10px 0px;background-color: #fff;
+}
+.row .left{
+  display: inline-block;vertical-align: top;text-align: left;width:20vw;height: 30px;line-height: 30px;
+  padding-left: 15px;
+}
+.row .center{
+  display: inline-block;vertical-align: top;text-align: right;height: 30px;line-height: 30px;
+  width: calc(100% - 25vw - 6vw - 10px - 15px);font-size:13px;color:#999;
+}
+.row .right{
+  display: inline-block;vertical-align: top;height: 30px;line-height: 30px;
+  color:#999;text-align: center;width:6vw;padding-left: 10px; 
+}
+.row .avatar{
+  width: 50px;height: 50px;line-height: 50px;
+}
+.notice{
+  margin-top:20px;background-color: #fff;padding:15px 15px;color:#666;font-size:13px;word-break: break-all;
+  margin-bottom: 40px;
+}
+.bm{
+  background-color: #fff;padding:15px 15px;width:calc(100% - 30px);height: 70px;
+}
+.bm .left,.bm .center,.bm .right{
+  float:left;height:100%;text-align: center;vertical-align: middle;line-height: 70px;
+}
+.bm .left{
+  width:25%;font-size: 14px;color:#999;
+}
+.bm .center{
+  width:50%;font-size: 48px;color:#6EC7F0;font-weight: 600;
+}
+
+.bm .right{
+  width:25%;color:#999;
+}
+.bm .small{
+  font-size:14px;
+}
+.submits{
+  padding:8px 0px;
+}
+.submits .btn{
+  width:90vw;margin:5px 5vw;
+}
+.center input{
+  height: 30px;line-height: 30px;font-size: 16px;
+}
+.bmi{
+  color:#fff;border-radius: 5px;background-color:#6EC7F0;padding:1px 5px;margin-right:6px;font-size: 13px;
+}
+.bmi-center{
+  font-size:16px;
+}
+.bmi-s,.bmi-l{
+  background-color:#F9C821;
+}
+.bmi-xl{
+  background-color:#FE9B58;
+}
+.bmi-xxl{
+  background-color:#ED1C24;
+}
+.bmi-xxxl{
+  background-color:#000;
+}
+.tool-weight{
+  position: fixed;right: 0px;top:65px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;
+  color:#fff;background-color: #6EC7F0;padding:4px 10px;text-align: center;
+}

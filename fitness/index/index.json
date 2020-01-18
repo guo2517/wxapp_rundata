@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": false,
-  "navigationBarTextStyle": "white",
+  "navigationBarTextStyle": "black",
   "navigationBarTitleText": "小哥哥的健身日记",
-  "navigationBarBackgroundColor": "#FB7299"
+  "navigationBarBackgroundColor": "#FFFFFF"
 }

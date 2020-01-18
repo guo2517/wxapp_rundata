@@ -1,0 +1,70 @@
+<view class="page"> 
+  <view class="bm">
+    <view class="left">代谢</view>
+    <view class="center">{{bm}}<text class="small">±50</text></view>
+    <view class="right">kcal</view>
+  </view>
+  <view class="row" style="border-top:1px solid #f5f5f5;margin-top:20px;">
+    <view class="left">性别</view>
+    <view class="center">
+      <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexs}}">
+    <view class="picker">
+     {{sexs[sexIndex]}}
+    </view>
+  </picker>
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left" style="width:calc(20vw - 15px);">生日</view>
+    <view class="center" style="width:30vw;">
+      <picker mode="date" value="{{userInfo.birthday}}"  end="{{today}}" bindchange="birthdayChange" start="1930-01-01" bindchange="birthChange">
+        <view class="picker" style="text-align:center;">
+         {{userInfo.birthday}}
+        </view>
+      </picker>
+    </view>
+     <view class="left" style="width:calc(20vw - 15px);">年龄</view>
+    <view class="center"style="width:calc(24vw - 10px);">
+      <input type="number" value="{{userInfo.age*1>0?userInfo.age:''}}" style="text-align:right;padding-left:20px;" placeholder="年龄" bindinput="numberInput" data-name="age"></input>
+    </view> 
+  </view>
+  <view class="row">
+    <view class="left">身高</view>
+    <view class="center">
+       <input type="number" bindinput="numberInput" name="height" data-name="height" value="{{userInfo.height.length>0?userInfo.height:''}}" placeholder="{{userInfo.height.length>0?userInfo.height:'厘米（cm）'}}"></input>
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">体重</view>
+    <view class="center">
+      <input type="number" bindinput="numberInput" name="weight" data-name="weight" value="{{userInfo.weight.length>0?userInfo.weight:''}}" placeholder="{{userInfo.weight.length>0?userInfo.height:'千克（kg）'}}"></input>
+    </view>
+    <view class="right">〉</view>
+  </view>
+  <view class="row">
+    <view class="left">BMI指数</view>
+    <view class="center bmi-center">
+      <text class="bmi bmi-{{bmi.cls}} font-{{fontSize-1}}" style="{{bmi.text!=''?'':'display:none'}}">{{bmi.text}}</text>
+      <text class="font-{{fontSize+2}}">{{userInfo.bmi>0?userInfo.bmi:'请设置身高体重'}}</text>
+    </view>
+    <view class="right"></view>
+  </view>
+  <view class="row clear submits" >  
+    <view class="btn btn-blue-solid " bindtap="bmInfo">计算</view>
+    <view class="btn btn-green-solid " bindtap="save" style="display:{{userInfo.bmi>0?'block':'none'}}">保存本次记录</view>   
+  </view>
+  <view class="notice font-{{fontSize-1}}">
+    <view>1、基础代谢（basal metabolism，BM）是指<text style="color:#FFC90E">人体维持生命的所有器官所需要的最低能量需要</text>，一般来说基础代谢越高越好。饮食摄入量至少应比基础代谢量多300~500kcal，健身人群或体力劳动者可能需要摄入更多。</view>
+    <view style="text-indent: 40rpx;">身体质量指数（BMI，Body Mass Index）是国际上最常用的衡量人体肥胖程度和是否健康的重要标准之一,最理想的BMI指数是22，中国人平均水平在18.5～23.9。</view>
+    <view>2、计量单位：100kcal(大卡)=418kj(千焦)，1000kj(千焦)=238kcal(大卡)，常见食品包装营养成分表单位一般使用千焦或kj。</view>
+    <view>3、本小程序基础代谢计算公式分为2种：
+      <view style="text-indent: 40rpx;">⑴.Schofield equation公式，18-60周岁按照此公式计算，为更符合亚洲人代谢水平，计算结果会再减去5%。</view>
+      <view style="text-indent: 40rpx;">⑵.Harris-Benedict方程，其他年龄按此公式计算（误差相对较大）。</view>
+      <view >不论何种计算方式均会产生误差，计算结果仅供参考。</view>
+    </view> 
+    <view>4、影响基础代谢的因素很多，例如：饭前饭后、运动前后、代谢病症（甲亢甲低），这些到会导致与计算结果产生误差，和体重一样，不要在意某一次的测量值，应当做长期均值参考</view>
+  </view>
+   <view  bindtap="toweight" class="tool-weight font-{{fontSize}}">体重管理</view>
+</view>

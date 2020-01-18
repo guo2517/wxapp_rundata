@@ -1,6 +1,12 @@
 @import "./common/wxss/weui.wxss";
+.hide{
+  display: none;
+}
+.page{
+  overflow-x: hidden;
+}
 page{
-  width:100vw;height: 100vh;background-color: #f8f8f8;
+  width:100vw;height: 100vh;background-color: #f8f8f8;overflow-x: hidden;
 } 
 /*//省略号
 overflow:hidden;
@@ -12,7 +18,27 @@ white-space: nowrap;
   overflow:hidden;
   text-overflow:ellipsis;  
 }
-
+.ellipsis-box{ 
+  overflow:hidden;
+  text-overflow:ellipsis;  
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+.ellipsis-2{ 
+  overflow:hidden;
+  text-overflow:ellipsis;  
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+.ellipsis-3{ 
+  overflow:hidden;
+  text-overflow:ellipsis;  
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3; 
+}
 .wxParse image{
   width: 100%;
   display: block;
@@ -49,4 +75,73 @@ button::after{
 }
 .search-btn image{
   width:22px;height: 22px;margin:9px auto;
+}
+/*偏小字体，用户记录值12，14，16*/
+.font-10{
+  font-size:10px!important;
+}
+.font-11{
+  font-size:11px!important;
+}
+.font-12{
+  font-size:12px!important;
+}
+.font-13{
+  font-size:13px!important;
+}
+.font-14{
+  font-size:14px!important;
+}
+.font-15{
+  font-size:15px!important;
+}
+.font-16{
+  font-size:16px!important;
+}
+.font-17{
+  font-size:17px!important;
+}
+.font-18{
+  font-size:18px!important;
+}
+.font-19{
+  font-size:19px!important;
+}
+.font-20{
+  font-size:20px!important;
+}
+.ec-charts {
+  position: absolute; 
+  width:100vw;height: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+.btn{
+  display: inline-block;color:#999;background-color: #fff;border:1px solid #999;height: 90rpx;line-height: 90rpx;
+  margin:0 auto;text-align: center;width:auto;min-width: 80px;
+  border-radius:3px; 
+}
+.btn-blue{
+  color:#6EC7F0; border:1px solid #6EC7F0;
+}
+.btn-primary{
+  color:#509FC9; border:1px solid #509FC9;
+}
+.btn-green{
+  color:#62DAAA;border:1px solid #62DAAA;
+}
+.clear{
+  clear:both;display: block;position: relative;
+}
+.btn-green-solid{
+  color:#fff; background-color:#62DAAA;border:1px solid #62DAAA;
+}
+.btn-blue-solid{
+  color:#fff; background-color:#6EC7F0;border:1px solid #6EC7F0;
+}
+.btn-primary-solid{
+  color:#fff; background-color:#509FC9;border:1px solid #509FC9;
 }

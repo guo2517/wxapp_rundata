@@ -1,65 +1,70 @@
 <view class="page">
+  <view class="clear"></view>
   <view class="row">
-    <view class="left" style="height: 50px;line-height: 50px;">头像</view>
-    <view class="center">
+    <view class="left font-{{fontSize+2}}" style="height: 50px;line-height: 50px;">头像</view>
+    <view class="center font-{{fontSize}}">
       <image class="avatar" src="{{userInfo.avatar.length>0?userInfo.avatar:'/common/images/goods.png'}}"></image>
     </view>
     <view class="right" style="height: 50px;line-height: 50px;">〉</view>
   </view>
   <view class="row">
-    <view class="left">昵称</view>
-    <view class="center">
+    <view class="left font-{{fontSize+2}}">昵称</view>
+    <view class="center font-{{fontSize}}">
       {{userInfo.nickname.length>0?userInfo.nickname:'授权获取'}}
     </view>
     <view class="right">〉</view>
   </view>
   <view class="row">
-    <view class="left">城市</view>
-    <view class="center">
+    <view class="left font-{{fontSize+2}}">城市</view>
+    <view class="center font-{{fontSize}}">
       {{userInfo.city.length>0?userInfo.city:'授权获取'}}
     </view>
     <view class="right">〉</view>
   </view>
   <view class="row">
-    <view class="left">性别</view>
-    <view class="center">
-      {{userInfo.sex==1?"男":(userInfo.sex==2?"女":"微信未设置")}}
+    <view class="left font-{{fontSize+2}}">性别</view>
+    <view class="center font-{{fontSize}}">
+      <picker bindchange="sexChange" value="{{userInfo.sex}}" range="{{sexs}}">
+        <view class="picker">
+          {{userInfo.sex==1?"男":(userInfo.sex==2?"女":"未设置")}}
+        </view>
+      </picker>
     </view>
     <view class="right">〉</view>
   </view>
   <view class="row">
-    <view class="left">生日</view>
-    <view class="center">
-      {{userInfo.birthday.length>0?userInfo.birthday:'设置'}}
+    <view class="left font-{{fontSize+2}}">生日</view>
+    <view class="center font-{{fontSize}}">
+       <picker mode="date" value="{{date}}"  end="{{today}}" bindchange="birthdayChange" start="1930-01-01" value="{{userInfo.birthday!=null?userInfo.birthday:0}}">
+        <view class="picker">
+          {{userInfo.birthday!=null?userInfo.birthday:"点击设置"}}
+        </view>
+      </picker>
     </view>
     <view class="right">〉</view>
   </view>
   <view class="row">
-    <view class="left">身高</view>
-    <view class="center">
+    <view class="left font-{{fontSize+2}}">身高</view>
+    <view class="center font-{{fontSize}}">
       {{userInfo.weight.length>0?userInfo.weight:'设置'}}
     </view>
     <view class="right">〉</view>
   </view>
   <view class="row">
-    <view class="left">体重</view>
-    <view class="center">
+    <view class="left font-{{fontSize+2}}">体重</view>
+    <view class="center font-{{fontSize}}">
       {{userInfo.height.length>0?userInfo.height:'设置'}}
     </view>
     <view class="right">〉</view>
-  </view>
+  </view> 
   <view class="row">
-    <view class="left">UID</view>
-    <view class="center">
-      {{userInfo.id>0?userInfo.id:''}}
+    <view class="left font-{{fontSize+2}}">OpenID</view>
+    <view class="center font-{{fontSize}}">
+      {{userInfo.openid_we.length>0?userInfo.openid_we:''}}
     </view>
     <view class="right"></view>
   </view>
-  <view class="row">
-    <view class="left">OpenID</view>
-    <view class="center">
-      {{userInfo.openid.length>0?userInfo.openid:''}}
-    </view>
-    <view class="right"></view>
-  </view>
+  <button class="ubtn btn-sync  font-{{fontSize+2}}">同步微信</button>
+<button class="ubtn btn-submit  font-{{fontSize+2}}">保存</button>
 </view>
+

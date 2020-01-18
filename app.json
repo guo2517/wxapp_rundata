@@ -1,17 +1,22 @@
 {
   "pages": [
+   
     "fitness/index/index",
     "fitness/user/weblogin",
     "fitness/user/info",
     "fitness/food/food",
-    "fitness/knowledge/knowledge",
-    "fitness/food/detail"
+    "fitness/term/term",
+    "fitness/food/detail",
+    "fitness/tools/bm",
+    "fitness/article/detail",
+    "fitness/term/detail",
+    "fitness/tools/aipic"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": false,
-  "navigationBarTextStyle": "white",
+  "navigationBarTextStyle": "black",
   "navigationBarTitleText": "BeFit登录授权",
-  "navigationBarBackgroundColor": "#EE5E7B"
+  "navigationBarBackgroundColor": "#FFFFFF"
 }

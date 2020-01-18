@@ -1,2 +1,45 @@
-<!--fitness/food/detail.wxml-->
-<text>fitness/food/detail.wxml</text>
+<import src="../../common/wxParse/wxParse.wxml"/> 
+
+<view class="page"> 
+<view class="head">
+<view class="food-card">
+  <view class="food-img">
+    <image src="{{food.picture}}" mode="aspectFill"></image>
+  </view>
+  <view class="food-info">
+    <view class="font-{{fontSize+4}}">{{food.name}}</view>
+    <view class="food-kcal font-{{fontSize+2}}">{{food.calorie}}kcal/ 100克</view>
+  </view>
+  <view class="tags font-{{fontSize-1}}">
+    <block wx:for="{{tags}}">
+    <text class="tag tag-{{item.cls}}">{{item.text}}</text> 
+    </block>
+  </view>
+</view>
+<view class="cates font-{{fontSize}}"> 
+    <view bindtap="tabchg" class="cate-item {{0==tabid?'cate-active':''}} font-{{fontSize+4}}"  data-id="0">概要</view>
+    <view bindtap="tabchg" class="cate-item {{1==tabid?'cate-active':''}} font-{{fontSize+4}}"  data-id="1">元素</view>  
+    <view bindtap="tabchg" class="cate-item {{2==tabid?'cate-active':''}} font-{{fontSize+4}}"  data-id="2">功效</view>
+    <view bindtap="tabchg" class="cate-item {{3==tabid?'cate-active':''}} font-{{fontSize+4}}"  data-id="3">相克</view>  
+  </view>
+</view>
+<view class="body" bindtouchmove="touchMove" > 
+  <view class="base" wx:if="{{tabid==0}}">
+   <view class="wxParse" style='min-height:20px;overflow-x:hidden;overflow-y:scroll;'> 
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view> 
+  </view>
+  <view class="elelist" wx:if="{{tabid==1}}">
+    <view class="item-head">
+      <view class="left">营养元素</view>
+      <view class="center">每100克含量</view> 
+    </view>
+    <block wx:for="{{elements}}">
+    <view class="item">
+      <view class="left">{{item.element}}</view>
+      <view class="center">{{item.content_value+" "+item.content_unit}}</view> 
+    </view>
+    </block>
+  </view>
+</view>
+</view> 

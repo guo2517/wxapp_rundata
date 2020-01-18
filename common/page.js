@@ -7,7 +7,7 @@ Page({
 
   },
   onLoad: function () {
-    app
+    app.commonInit(this)
   },
   onShow: function () {
 

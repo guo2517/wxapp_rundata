@@ -1,38 +1,76 @@
 <view class="food-header">
+<form bindsubmit="formsub" >
   <view class='search'>
-    <form bindsubmit="formsub">
-    <input type="text" name="keyword" value="{{keyword}}" bindinput="searchInput" class='search-input' /> 
-    <view class='search-btn' bindtap="formsub">
+     
+    <input type="text" name="keyword" bindconfirm="formsub" value="{{keyword}}" confirm-type="search" bindinput="searchInput" class='search-input' /> 
+    <view class='search-btn' bindtap="formsub" data-research="1">
       <image src='/common/images/icon-search.png'></image>
     </view>
-    </form>
+     <button formType="submit" class="hide">Submit</button>
   </view> 
+  <view class="sort">
+    <view class="sort-left" bindtap="showsortfield">显示&排序</view> 
+    <view class="sort-right" bindtap="changesort" data-sort="{{desc}}">
+      <block wx:for="{{eles}}">
+        <text wx:if="{{item.code==desc_code}}" class="font-{{fontSize}}">{{item.name}}</text> 
+      </block> 
+       <text wx:if="{{0==desc_code}}" class="font-{{fontSize}}">默认</text>
+      <text class="sort-desc font-{{fontSize-2}}">{{desc=="desc"?"由高到低":"由低到高"}}</text>
+    </view>
+  </view>
+ </form>
 </view>
-<scroll-view scroll-y="true"  class="food-left"> 
+<scroll-view scroll-y="true"  class="food-left hide"> 
   <block wx:for="{{groups}}">
-  <view class="item {{groupsActive==item.id?'active':''}}" bindtap="grouptap" data-id="{{item.id}}">{{item.name}}</view>
+  <view class="item {{groupsActive==item.id?'active':''}}  font-{{fontSize}}" bindtap="grouptap" data-id="{{item.id}}">{{item.name}}</view>
   </block> 
 </scroll-view>
 <scroll-view scroll-y="true"  class="food-right" bindscrolltolower="nextPage"> 
-  <block wx:for="{{foods}}">
+  <block wx:for="{{foods}}" wx:for-item="food">
   <view class="food-item">
-    <image class="food-pic" src="/common/images/goods.png"></image>
-    <view class="food-info" bindtap="foodDetail" data-id="{{item.id}}">
-      <view class="food-name">{{item.name}}<text class="food-alias">{{item.alias==null?"":item.alias}}</text></view>
+    <image class="food-pic" mode="aspectFill" src="{{food.picture.length>5?food.picture:'/common/images/goods.png'}}"  bindtap="foodDetail" data-id="{{food.id}}"></image>
+    <view class="food-info" bindtap="foodDetail" data-id="{{food.id}}">
+      <view class="food-name   ellipsis-2"><text>{{food.name}}</text><text class="food-alias ">{{food.alias==null?"":food.alias}}</text></view>
       <view class="row">
-        <view class="label">热量</view>
-        <view class="value">{{item.elements[1]!=undefined?item.elements[1].content_value+item.elements[1].content_unit:'0'}}</view>
-        <view class="label">碳水</view>
-        <view class="value">{{item.elements[2]!=undefined?item.elements[2].content_value+item.elements[2].content_unit:'0'}}</view>
-      </view>
-      <view class="row">
-        <view class="label">脂肪</view>
-        <view class="value">{{item.elements[3]!=undefined?item.elements[3].content_value+item.elements[3].content_unit:'0'}}</view>
-        <view class="label">蛋白质</view>
-        <view class="value">{{item.elements[4]!=undefined?item.elements[4].content_value+item.elements[4].content_unit:'0'}}</view>
+        <block wx:for="{{eles}}">
+        <block wx:if="{{food[item.code]!=undefined&&food[item.code]!=null}}">
+        <view class="row-half {{item.eid==desc_code?'sort-mark':''}}">
+        <view class="label font-{{fontSize-1}}">{{item.name=="碳水化合物"?"碳水":item.name}}</view>
+        <view class="value  font-{{fontSize-1}}">{{food[item.code]*1}}{{item.unit}}</view> 
+        </view>
+        </block>
+        </block>
       </view>
     
     </view>
   </view>
   </block>
 </scroll-view>
+<block wx:if="{{showSort==1}}">
+<view class="sort-body">
+<view class="sort-panel">
+
+  <view class="field sort-field">
+    <view class="sort-label  font-{{fontSize}}">排序方式</view>
+    <view class="sort-block">
+      <view bindtap='setsortfield' data-code="0" data-id="0" class="sfields   font-14 {{desc_code==0?'sfields-active':''}}">默认排序</view>
+      <block wx:for="{{eles}}">
+      <view wx:if="{{item.checked==1}}" bindtap='setsortfield' class="sfields  font-14 {{item.code==desc_code?'sfields-active':''}}" data-id="{{item.id}}" data-code="{{item.code}}" data-name="{{item.name}}">{{item.name}}</view>
+      </block>
+    </view>
+  </view>
+  <view class="field show-field">
+    <view class="sort-label font-{{fontSize}}">显示元素</view>
+    <view class="sort-block">
+      <block wx:for="{{eles}}">
+      <view bindtap='sele' class="sfields  font-14 {{item.checked==1?'sfields-active':''}}" data-id="{{item.id}}" data-name="{{item.name}}" data-code="{{item.code}}">{{item.name}}</view>
+      </block>
+    </view>
+    
+  </view>
+ 
+</view>
+ <view class="btn" bindtap="showsortfield" data-research="1">确定</view>
+</view>
+<view class="sort-bg" bindtap="showsortfield">关闭</view>
+</block>

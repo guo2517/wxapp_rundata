@@ -2,9 +2,16 @@
 App({ 
   config:{
     socket_fid:null,
-    socketServer:"wss://fitness.guo888.cn:30002",
-    siteroot: "https://fitness.guo888.cn/",
-    version: "1.0.3"
+    socketServer:"wss://fit365.top/wss",
+    siteroot: "https://fit365.top/",
+    version: "1.0.6"
+  },
+  commonInit:function(page){
+    var that=this;
+    page.setData({ 
+      userInfo: that.data.userInfo,
+      siteroot: that.config.siteroot
+    })
   },
   data:{
     userInfo:null,
@@ -12,12 +19,23 @@ App({
   },//全局参数 
   onLaunch: function () {
     var app = this; 
+    this.request({
+      url:"common.home",
+      success:function(ret){
+        app.data.elements=ret.data.elements;
+      }
+    });
+  //  this.getUserInfo();
   },  
   request: function (options, func = null) { 
     var url0 = "",openid="",that=this,time=Date.parse(new Date())/1000;
-    if (this.data.openid != null  ){
-      openid=this.data.openid;
-    }
+    var uid=""; 
+    if (this.data.userInfo != null  ){
+      openid = this.data.userInfo.openid_we;
+      uid = this.data.userInfo.id; 
+    }else if(this.data.openid!=null){
+      openid = this.data.openid;
+    } 
     if (typeof (options) != "object") {
       url0 = options;
     } else {
@@ -29,6 +47,7 @@ App({
     var params= {
         version:that.version,
         o:openid,
+        uid:uid,
         t:time,
         r:that.tool.randChar(10,1),
         v: that.config.version,
@@ -36,7 +55,7 @@ App({
         f: "weapp"}; 
 
     if (typeof (options.data)!= "undefined") { 
-      params = Object.assign(options.data, { r: that.tool.rand(10,1),v: that.config.version,t:time, v: that.version, o: openid, f: "weapp" })
+      params = Object.assign(options.data, { r: that.tool.rand(10,1),v: that.config.version,t:time, v: that.version, o: openid, f: "weapp" ,uid:uid})
     } 
     params.sign=that.getSign(params);
     if(typeof(options.loading)!="undefined"&&options.loading==true){
@@ -120,7 +139,9 @@ App({
   initPageData: function (data) {
     var pages = getCurrentPages();
     var currentPage = pages[pages.length - 1]; 
-    currentPage.setData(data)
+    if(currentPage!=undefined){
+      currentPage.setData(data)
+    } 
   },
   onHide: function () {
 
@@ -190,7 +211,7 @@ App({
           dataType: "json",
           data: { code: res.code }, 
           success: function (res) {
-            if(res.status>0){
+            if(res.status>0){ 
               that.data.openid = res.openid; 
             }else{
               wx.showToast({

@@ -1,4 +1,76 @@
 var tools = {}
+//params time:时间戳,type:返回完整时间（0返回完整时间,1返回日期，2返回时间，3返回每个节点数组,4返回时分）,wrong：转化失败返回
+//return yyyy-MM-dd HH:ii:ss 
+tools.datetime = function (time, type, wrong) {
+  type = type || 0;
+  wrong = wrong || "";
+  if (isNaN(parseFloat(time)) || parseFloat(time) < 0) {
+    return wrong;
+  }
+  var timestamp = parseFloat(time) > 0 ? time * 1000 : 0;
+  var date = new Date(timestamp);
+
+  var month = date.getMonth() + 1;
+  var day = date.getDate(), hour = date.getHours(), min = date.getMinutes(), sec = date.getSeconds();
+  var ret = {
+    "y": date.getFullYear(),
+    "m": month,
+    "d": day,
+    h: hour,
+    "i": hour,
+    's': sec,
+    w: date.getDay(),
+    "year": date.getFullYear()
+  }
+  if (month >= 1 && month <= 9) {
+    month = "0" + month;
+  }
+  if (day >= 0 && day <= 9) {
+    day = "0" + day;
+  }
+  if (hour >= 0 && hour <= 9) {
+    hour = "0" + hour;
+  }
+  if (min >= 0 && min <= 9) {
+    min = "0" + min;
+  }
+  if (sec >= 0 && sec <= 9) {
+    sec = "0" + sec;
+  }
+  if (type == 3) {
+    //简写ymdisw小于10不带0,星期不转化汉字
+    ret.month = month;
+    ret.day = day;
+    ret.hour = hour;
+    ret.second = sec;
+    var weekday = ["日", "一", "二", "三", "四", "五", "六"];
+    ret.weekday = weekday[date.getDay()];
+    ret.date = date.getFullYear() + "-" + month + "-" + day;
+    ret.time = hour + ":" + min + ":" + sec;
+  } else if (type == 4) {
+    ret = hour + ":" + min;
+  } else if (type == 5) {
+    ret = date.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + min;
+  } else if (type == 2) {
+    ret = hour + ":" + min + ":" + sec;
+  } else if (type == 1) {
+    ret = date.getFullYear() + "-" + month + "-" + day;
+  } else {
+    ret = date.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec
+  }
+  return ret;
+}  
+tools.strtotime = function (str) {
+  if (str.indexOf(":") < 0) {
+    var date = Date.parse(new Date(str.replace(/-/, "/"))) / 1000;
+    return date;
+  } else {
+    var arr1 = str.split(" ");
+    var sdate = arr1[0].split('-');
+    var date = Date.parse(new Date(sdate[0], sdate[1] - 1, sdate[2])) / 1000;
+    return date;
+  }
+}
 tools.initPage=function(page,pagename){
   if(typeof(pagename)=="undefined")pagename="pagnation";
   var data={};

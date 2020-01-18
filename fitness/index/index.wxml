@@ -7,7 +7,7 @@
 <block wx:else> 
 <view   class="page">
 <block wx:if="{{tabbar.active=='index'}}">
-<scroll-view  scroll-x="false" scroll-y="true"  enable-back-to-top="true" class='page-index'  >
+<scroll-view  scroll-x="false" scroll-y="true" scroll-top="{{scrollTop}}" bind enable-back-to-top="true" bindscroll="indexscroll" class='page-index'  >
   <form > 
   <view class='search'>
     <form onsubmit="">
@@ -18,49 +18,71 @@
     </form>
   </view>
   </form>
+  <view class="cate">
+    <view class="cate-item" bindtap="topage" data-url="/fitness/food/food">
+      <image src="/common/images/icon-chicken.png"></image>
+      <view>食材库</view>
+    </view>
+     <view class="cate-item" bindtap="topage" data-url="/fitness/tools/aipic" >
+      <image src="/common/images/icon-camera-blue.png"></image>
+      <view>随手拍</view>
+    </view>
+     <view class="cate-item" bindtap="topage"  data-url="/fitness/food/food">
+      <image src="/common/images/icon-leaf.png"></image>
+      <view>养生食疗</view>
+    </view>
+  </view>
   <view class="index-tabs">
     <view class='tabs-title'>
-      <view class="item" data-type="latest">最新</view>
-      <view class='item' data-type="share">分享</view>
-      <view class='item' data-type="sknow">通知</view>
+      <view class='tabs-title'>
+        <view class="item {{article_type=='latest'?'active':''}}" bindtap="homesharetap" data-type="latest">最新</view>
+        <view class="item {{article_type=='share'?'active':''}}"  bindtap="homesharetap" data-type="share">分享</view>
+        <view class="item {{article_type=='article'?'active':''}}" bindtap="homesharetap" data-type="article">专题</view>
+         
+      </view>
     </view>
     <view class='tabs-content' >
       <view class='news' wx:for="{{articles}}">
       <view class="news-head">
         <view class='news-left'> 
-          <image src='{{userInfo.avatar}}' class='news-avatar'></image>
+          <image src='{{item.avatar}}' class='news-avatar'></image>
         </view>
         <view class='news-center'>
-          <view class='news-nickname ellipsis'>{{userInfo.nickname}}</view>
-          <view class='news-before'>7小时前</view>
+          <view class='news-nickname ellipsis'>{{item.nickname}}</view>
+          <view class='news-before'>{{item.before}}</view>
         </view>
         <view class='news-right'>
-          <view class='news-top'>置顶</view>
-          <view class='news-jing'>精华</view>
-          <view class='news-hot'>热门</view>
+          <view class='news-top' wx:if="{{item.is_top==1}}">置顶</view>
+          <view class='news-jing' wx:if="{{item.is_good==1}}">精华</view>
+          <view class='news-hot' wx:if="{{item.is_hot==1}}">热门</view>
         </view>
         
       </view>
-      <view class='news-content'><text class="news-topic">#{{item.topic}}#</text>{{item.title}}</view>
+      <view class='news-content' >
+        <block wx:for="{{item.tags}}">
+        <text class="news-topic" bindtap="topictap" data-tag="{{item}}">#{{item}}#</text>
+        </block>
+        <text bindtap="articleDetail" data-type="{{item.type}}" data-id="{{item.item_id}}">{{item.content}}</text></view>
       </view>
     </view> 
   </view>
+  <image bindtap="totop" src="/common/images/icon-totop.png" style="display:{{showtop==1?'block':'none'}}" class="totop"></image>
 </scroll-view> 
 </block>
 
 <!-- 分类页面 -->
 <block wx:if="{{tabbar.active=='tool'}}">
-<scroll-view scroll-x="false" scroll-y="true" enable-back-to-top="true" class='page-tool' style='z-index:1;padding-bottom:0px;height:{{device.height-51}}px'>
-  <swiper class='adverts' indicator-dots="false}"
+<scroll-view scroll-x="false" scroll-y="true" enable-back-to-top="true" class='page-tool' style='z-index:1;padding-bottom:0px;padding-top:2vw'>
+  <swiper class='banner' indicator-dots="false}"
   autoplay="true" interval="8000" duration="1000">
-  <block wx:for="{{adverts}}">
-    <swiper-item>
-      <image src="{{item}}" mode='aspectFill' class="slide-image" width="355" height="150"/>
+  <block wx:for="{{banner}}">
+    <swiper-item wx:if="{{item.length>5}}">
+      <image src="{{item}}"  mode='aspectFill' class="slide-image" width="355" height="150"/>
     </swiper-item>
   </block>
 </swiper>
 <view class='tools'>
- <view class='tool tool-blue-1' bindtap="tooltap" data-url="/knowledge/knowledge">
+ <view class='tool tool-blue-1' bindtap="tooltap" data-url="/term/term">
     <view class='tool-img'>
       <image src='/common/images/icon-book.png'></image>
     </view>
@@ -76,6 +98,80 @@
     <view class='tool-right'>
       <view class='tool-name'>食材库</view> 
        <view class='tool-desc'>热量、营养价值</view>
+    </view>
+  </view>
+   <view class='tool tool-orange-1' bindtap="tooltap"  data-url="/tools/bm">
+    <view class='tool-img'>
+      <image src='/common/images/icon-strong-1.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>BM</view> 
+       <view class='tool-desc'>基础代谢、BMI</view>
+    </view>
+  </view>
+  <view class='tool tool-purple-1' bindtap="tooltap"  data-url="/tools/aipic">
+    <view class='tool-img'>
+      <image src='/common/images/icon-camera-white.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>AI随手拍</view> 
+       <view class='tool-desc'>食材热量拍立得</view>
+    </view>
+  </view>
+  <view class='tool tool-grey-1' bindtap="tooltap" data-date="2020年6月" data-url="/term/term">
+    <view class='tool-img'>
+      <image src='/common/images/icon-body-woman-white.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>体重管理</view> 
+       <view class='tool-desc'>体重健康指数</view>
+    </view>
+  </view>
+  <view class='tool tool-grey-1' bindtap="tooltap" data-date="2020年6月" data-url="/term/term">
+    <view class='tool-img'>
+      <image src='/common/images/icon-heart-white.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>疾病预防</view> 
+       <view class='tool-desc'>早发现早治疗</view>
+    </view>
+  </view>
+  <view class='tool tool-grey-1 hide' bindtap="tooltap" data-date="2020年3月" data-url="/term/term">
+    <view class='tool-img'>
+      <image src='/common/images/icon-picture-white.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>精选图库</view> 
+       <view class='tool-desc'>养眼</view>
+    </view>
+  </view>
+ 
+ <view class='tool tool-grey-1' bindtap="tooltap" data-date="2020年3月" data-url="/term/term">
+    <view class='tool-img'>
+      <image src='/common/images/icon-run-white.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>微信运动</view> 
+       <view class='tool-desc'>微信步数月历</view>
+    </view>
+  </view>
+  
+  <view class='tool tool-grey-1' bindtap="tooltap" data-date="2020年12月" data-url="/term/term">
+    <view class='tool-img'>
+      <image src='/common/images/icon-hot-white.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'>热量计算</view> 
+       <view class='tool-desc'>饮食计划</view>
+    </view>
+  </view>
+  <view class='tool tool-grey-1' >
+    <view class='tool-img'>
+      <image src='/common/images/icon-more-white.png'></image>
+    </view>
+    <view class='tool-right'>
+      <view class='tool-name'></view> 
+       <view class='tool-desc' style="margin-top:28px;font-size:16px;">规划中</view>
     </view>
   </view>
 
