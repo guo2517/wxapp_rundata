@@ -14,7 +14,12 @@ Page({
   onReady: function () {
 
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    if(typeof(options.keyword)!="undefined"){
+      this.setData({
+        keyword:options.keyword
+      })
+    }
     var that = this;
     this.getEles();
     that.setData({

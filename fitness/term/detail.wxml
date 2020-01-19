@@ -1,2 +1,12 @@
-<!--fitness/term/detail.wxml-->
-<text>fitness/term/detail.wxml</text>
+<import src="../../common/wxParse/wxParse.wxml"/> 
+<view class="head">
+  <view class="title">{{term.name}}</view>
+  <view class="desc"></view>
+</view>
+<view class="wxParse" style='min-height:20px;overflow-x:hidden;overflow-y:scroll;'> 
+  <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view>  
+<view class="comment" >
+  <view>评论和转发功能还未上线</view>
+  <view>敬请期待</view>
+</view>

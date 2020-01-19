@@ -8,16 +8,16 @@
 <view   class="page">
 <block wx:if="{{tabbar.active=='index'}}">
 <scroll-view  scroll-x="false" scroll-y="true" scroll-top="{{scrollTop}}" bind enable-back-to-top="true" bindscroll="indexscroll" class='page-index'  >
-  <form > 
+ 
   <view class='search'>
-    <form onsubmit="">
-    <input type="text" name="keyword" oninput="" class='search-input' /> 
-    <view class='search-btn' bindtab="">
+    <form bindsubmit="formsub" >
+    <input type="text" name="keyword" bindinput="keywordInput" confirm-type="search" class='search-input' /> 
+    <view class='search-btn' bindtap="searchArticle">
       <image src='/common/images/icon-search.png'></image>
     </view>
+    <button formType="submit" class="hide">Submit</button>
     </form>
-  </view>
-  </form>
+  </view> 
   <view class="cate">
     <view class="cate-item" bindtap="topage" data-url="/fitness/food/food">
       <image src="/common/images/icon-chicken.png"></image>
@@ -27,7 +27,7 @@
       <image src="/common/images/icon-camera-blue.png"></image>
       <view>随手拍</view>
     </view>
-     <view class="cate-item" bindtap="topage"  data-url="/fitness/food/food">
+     <view class="cate-item" bindtap="topage" data-date="2020-06"  data-url="/fitness/food/food">
       <image src="/common/images/icon-leaf.png"></image>
       <view>养生食疗</view>
     </view>
@@ -52,9 +52,11 @@
           <view class='news-before'>{{item.before}}</view>
         </view>
         <view class='news-right'>
+        
           <view class='news-top' wx:if="{{item.is_top==1}}">置顶</view>
           <view class='news-jing' wx:if="{{item.is_good==1}}">精华</view>
           <view class='news-hot' wx:if="{{item.is_hot==1}}">热门</view>
+          <view class='news-grey' wx:if="{{item.type=='article'}}">专题</view>
         </view>
         
       </view>
@@ -209,28 +211,28 @@
         <view class='menu-center'>个人信息</view>
         <view class='menu-right'></view>
       </view>
-      <view class='menu-item'>
+      <view class='menu-item' bindtap="topage" data-date="2020">
         <view class='menu-left'>
           <image src='/common/images/icon-follow.png'></image>
         </view>
         <view class='menu-center'>我的关注</view>
         <view class='menu-right'></view>
       </view>
-      <view class='menu-item'>
+      <view class='menu-item' bindtap="topage" data-date="2020">
         <view class='menu-left'>
           <image src='/common/images/icon-collect.png'></image>
         </view>
         <view class='menu-center'>我的收藏</view>
         <view class='menu-right'></view>
       </view>
-      <view class='menu-item'>
+      <view class='menu-item' bindtap="topage" data-date="2020">
         <view class='menu-left'>
           <image src='/common/images/icon-litter.png'></image>
         </view>
-        <view class='menu-center'>我的私信</view>
+        <view class='menu-center'>系统消息</view>
         <view class='menu-right'></view>
       </view>
-      <view class='menu-item'>
+      <view class='menu-item' bindtap="topage" data-url="/fitness/other/about">
         <view class='menu-left'>
           <image src='/common/images/icon-weapp.png'></image>
         </view>

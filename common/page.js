@@ -6,7 +6,7 @@ Page({
   onReady: function () {
 
   },
-  onLoad: function () {
+  onLoad: function (options) {
     app.commonInit(this)
   },
   onShow: function () {

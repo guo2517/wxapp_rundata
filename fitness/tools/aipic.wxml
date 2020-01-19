@@ -26,10 +26,10 @@
     <scroll-view  scroll-x="false" scroll-y="true"  enable-back-to-top="true"  wx:if="{{result.length>0}}">
       <block wx:for="{{result}}">
       <view class="result-item">
-        <image class="item-pic" src="{{item.picure.length>3?item.picture:'/common/images/icon-default-grey.png'}}"></image>
+        <image class="item-pic" src="{{item.picture.length>3?item.picture:'/common/images/icon-default-grey.png'}}"></image>
         <view class="item-info" bindtap="itemTap" data-name="{{item.name}}" data-foodid="{{item.food_id>0?item.food_id:0}}">
           <view class="item-name">{{item.name}}<text class="item-alias" wx:if="{{item.alias!=undefined&&item.alias!=item.name}}">{{item.alias}}</text><text class="item-det" wx:if="{{item.food_id>0}}">详情</text></view>
-          <view class="item-hot" wx:if="{{item.calorie!=undefined}}"><text class="calorie" >{{item.calorie}}</text>千卡/100克</view>
+          <view class="item-hot" wx:if="{{item.calory!=undefined}}"><text class="calory" >{{item.calory}}</text>千卡/100克</view>
         </view>
         <view class="item-like like-{{item.score>=0.8?'green':(item.score>=0.6?'blue':(item.score>=0.4?'orange':'grey'))}}">
           <view class="percent">{{item.score*100}}%</view>

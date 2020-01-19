@@ -1,6 +1,5 @@
 {
   "pages": [
-   
     "fitness/index/index",
     "fitness/user/weblogin",
     "fitness/user/info",
@@ -10,7 +9,8 @@
     "fitness/tools/bm",
     "fitness/article/detail",
     "fitness/term/detail",
-    "fitness/tools/aipic"
+    "fitness/tools/aipic",
+    "fitness/other/about"
   ],
   "window": {
     "backgroundTextStyle": "light",

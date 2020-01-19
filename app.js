@@ -4,7 +4,7 @@ App({
     socket_fid:null,
     socketServer:"wss://fit365.top/wss",
     siteroot: "https://fit365.top/",
-    version: "1.0.6"
+    version: "1.0.3"
   },
   commonInit:function(page){
     var that=this;

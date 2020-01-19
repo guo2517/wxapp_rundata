@@ -53,7 +53,7 @@
   </view>
   <view class="row clear submits" >  
     <view class="btn btn-blue-solid " bindtap="bmInfo">计算</view>
-    <view class="btn btn-green-solid " bindtap="save" style="display:{{userInfo.bmi>0?'block':'none'}}">保存本次记录</view>   
+    <view class="btn btn-green-solid hide" bindtap="save" >保存本次记录</view>   
   </view>
   <view class="notice font-{{fontSize-1}}">
     <view>1、基础代谢（basal metabolism，BM）是指<text style="color:#FFC90E">人体维持生命的所有器官所需要的最低能量需要</text>，一般来说基础代谢越高越好。饮食摄入量至少应比基础代谢量多300~500kcal，健身人群或体力劳动者可能需要摄入更多。</view>
@@ -64,7 +64,7 @@
       <view style="text-indent: 40rpx;">⑵.Harris-Benedict方程，其他年龄按此公式计算（误差相对较大）。</view>
       <view >不论何种计算方式均会产生误差，计算结果仅供参考。</view>
     </view> 
-    <view>4、影响基础代谢的因素很多，例如：饭前饭后、运动前后、代谢病症（甲亢甲低），这些到会导致与计算结果产生误差，和体重一样，不要在意某一次的测量值，应当做长期均值参考</view>
+    <view>4、本小程序计算的标准代谢的大概值，并不代表您的真实代谢水平，还是建议您购买使用专业的体脂秤。</view>
   </view>
-   <view  bindtap="toweight" class="tool-weight font-{{fontSize}}">体重管理</view>
+   <view  bindtap="toweight" class="tool-weight hide font-{{fontSize}}">体重管理</view>
 </view>

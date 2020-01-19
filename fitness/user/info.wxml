@@ -5,28 +5,28 @@
     <view class="center font-{{fontSize}}">
       <image class="avatar" src="{{userInfo.avatar.length>0?userInfo.avatar:'/common/images/goods.png'}}"></image>
     </view>
-    <view class="right" style="height: 50px;line-height: 50px;">〉</view>
+    <view class="right" style="height: 50px;line-height: 50px;"></view>
   </view>
   <view class="row">
     <view class="left font-{{fontSize+2}}">昵称</view>
     <view class="center font-{{fontSize}}">
       {{userInfo.nickname.length>0?userInfo.nickname:'授权获取'}}
     </view>
-    <view class="right">〉</view>
+    <view class="right"></view>
   </view>
   <view class="row">
     <view class="left font-{{fontSize+2}}">城市</view>
     <view class="center font-{{fontSize}}">
       {{userInfo.city.length>0?userInfo.city:'授权获取'}}
     </view>
-    <view class="right">〉</view>
+    <view class="right"></view>
   </view>
   <view class="row">
     <view class="left font-{{fontSize+2}}">性别</view>
     <view class="center font-{{fontSize}}">
-      <picker bindchange="sexChange" value="{{userInfo.sex}}" range="{{sexs}}">
+      <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexs}}">
         <view class="picker">
-          {{userInfo.sex==1?"男":(userInfo.sex==2?"女":"未设置")}}
+        {{sexs[userInfo.sex]}}
         </view>
       </picker>
     </view>
@@ -35,9 +35,9 @@
   <view class="row">
     <view class="left font-{{fontSize+2}}">生日</view>
     <view class="center font-{{fontSize}}">
-       <picker mode="date" value="{{date}}"  end="{{today}}" bindchange="birthdayChange" start="1930-01-01" value="{{userInfo.birthday!=null?userInfo.birthday:0}}">
-        <view class="picker">
-          {{userInfo.birthday!=null?userInfo.birthday:"点击设置"}}
+      <picker mode="date" value="{{userInfo.birthday}}"  end="{{today}}" bindchange="birthdayChange" start="1930-01-01" bindchange="birthChange">
+        <view class="picker" style="text-align:right;">
+         {{userInfo.birthday}}
         </view>
       </picker>
     </view>
@@ -46,14 +46,14 @@
   <view class="row">
     <view class="left font-{{fontSize+2}}">身高</view>
     <view class="center font-{{fontSize}}">
-      {{userInfo.weight.length>0?userInfo.weight:'设置'}}
+      <input type="number" bindinput="numberInput" name="height" data-name="height" value="{{userInfo.height.length>0?userInfo.height:''}}" placeholder="{{userInfo.height.length>0?userInfo.height:'厘米（cm）'}}"></input>
     </view>
     <view class="right">〉</view>
   </view>
   <view class="row">
     <view class="left font-{{fontSize+2}}">体重</view>
     <view class="center font-{{fontSize}}">
-      {{userInfo.height.length>0?userInfo.height:'设置'}}
+       <input type="number" bindinput="numberInput" name="weight" data-name="weight" value="{{userInfo.weight.length>0?userInfo.weight:''}}" placeholder="{{userInfo.weight.length>0?userInfo.height:'千克（kg）'}}"></input>
     </view>
     <view class="right">〉</view>
   </view> 
@@ -64,7 +64,7 @@
     </view>
     <view class="right"></view>
   </view>
-  <button class="ubtn btn-sync  font-{{fontSize+2}}">同步微信</button>
-<button class="ubtn btn-submit  font-{{fontSize+2}}">保存</button>
+  <button class="ubtn btn-sync  font-{{fontSize+2}}" bindtap="syncUserInfo" open-type="getUserInfo">同步微信</button>
+<button bindtap="saveInfo" class="ubtn btn-submit  font-{{fontSize+2}}">保存</button>
 </view>
 

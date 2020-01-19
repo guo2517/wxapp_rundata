@@ -13,6 +13,12 @@ Page({
   onReady: function () {
 
   },
+  termtap:function(e){
+    var id=e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/fitness/term/detail?id='+id,
+    })
+  },
   //下一页
   nextPage: function () {
     if (app.tool.nextPage(this)) {

@@ -33,6 +33,13 @@ Page({
     }
   },
   topage:function(e){
+    if(typeof(e.currentTarget.dataset.date)!='undefined'){
+      wx.showToast({
+        title: '敬请期待',
+        icon:'none'
+      })
+      return false;
+    }
     wx.navigateTo({
       url: e.currentTarget.dataset.url
     })
@@ -55,6 +62,10 @@ Page({
       tabbar:tabs
     });
    
+  },
+  searchArticle:function(){
+    app.tool.initPage(this,"artpage");
+    this.getArticle();
   },
   getArticle:function(){
     var that=this;
@@ -170,5 +181,10 @@ Page({
         showtop:0
       })
     }
+  },
+  keywordInput:function(e){
+    this.setData({
+      keyword:e.detail.value
+    })
   }
 })

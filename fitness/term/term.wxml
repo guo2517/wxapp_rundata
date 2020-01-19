@@ -16,7 +16,7 @@
 
 <scroll-view scroll-y="true"  class="know-body" bindscrolltolower="nextPage"> 
   <block wx:for="{{terms}}">
-  <view class="know-item">
+  <view class="know-item" bindtap="termtap" data-id="{{item.id}}">
     <image class="know-pic" src="/common/images/{{item.img!=null?item.img:item.icon}}"></image>
     <view class="know-info">
       <view class="know-name font-{{fontSize+3}} ellipsis">{{item.name}}</view>

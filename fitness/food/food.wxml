@@ -28,7 +28,7 @@
 <scroll-view scroll-y="true"  class="food-right" bindscrolltolower="nextPage"> 
   <block wx:for="{{foods}}" wx:for-item="food">
   <view class="food-item">
-    <image class="food-pic" mode="aspectFill" src="{{food.picture.length>5?food.picture:'/common/images/goods.png'}}"  bindtap="foodDetail" data-id="{{food.id}}"></image>
+    <image class="food-pic" mode="aspectFill" src="{{food.picture.length>5?food.picture:'/common/images/icon-default-grey.png'}}"  bindtap="foodDetail" data-id="{{food.id}}"></image>
     <view class="food-info" bindtap="foodDetail" data-id="{{food.id}}">
       <view class="food-name   ellipsis-2"><text>{{food.name}}</text><text class="food-alias ">{{food.alias==null?"":food.alias}}</text></view>
       <view class="row">

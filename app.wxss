@@ -1,6 +1,6 @@
 @import "./common/wxss/weui.wxss";
 .hide{
-  display: none;
+  display: none!important;
 }
 .page{
   overflow-x: hidden;
@@ -23,7 +23,7 @@ white-space: nowrap;
   text-overflow:ellipsis;  
   display:-webkit-box; 
   -webkit-box-orient:vertical;
-  -webkit-line-clamp:2; 
+  -webkit-line-clamp:4; 
 }
 .ellipsis-2{ 
   overflow:hidden;

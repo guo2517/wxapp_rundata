@@ -1,0 +1,4 @@
+<import src="../../common/wxParse/wxParse.wxml"/>  
+<view class="wxParse" style='min-height:20px;overflow-x:hidden;overflow-y:scroll;'> 
+  <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view>  

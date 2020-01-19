@@ -115,6 +115,7 @@
 .news-before{
   color:#999;font-size:12px;
 }
+
 .news-head{
   height: 80rpx;padding-top:5px;
 }
@@ -138,6 +139,9 @@
 }
 .news-hot{
   background-color:#F2363D;
+}
+.news-grey{
+  background-color:#ccc;
 }
 .news-jing{
   background-color:#FE9B58;
